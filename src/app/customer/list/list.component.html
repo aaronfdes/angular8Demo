@@ -27,7 +27,11 @@
       <td>{{customer.id}}</td>
       <td>{{customer.name | titlecase}}</td>
       <td>{{customer.location}}</td>
-      <td><a href="" (click)="delete($event,customer.id)">Delete</a> | <a href="" (click)="edit($event,customer)">Edit</a></td>
+      <td>
+        <a href="" (click)="delete($event,customer.id)">Delete</a> 
+        | <a href="" (click)="edit($event,customer)">Edit</a> 
+        | <a [routerLink]="customer.id">View</a>
+      </td>
     </tr>
     <tr>
       <td><button (click)="save()" [disabled]="!newCustomer.isValid()">Add</button></td>

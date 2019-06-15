@@ -7,9 +7,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppSharedModule } from '../app-shared/app-shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+
+const routes: Routes = [
+  { path: "register", component: RegisterComponent },
+  { path: "login", component: LoginComponent }
+]
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -17,8 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    AppSharedModule
+    AppSharedModule,
+    RouterModule.forChild(routes)
   ],
-  exports: [RegisterComponent]
+  // exports: [RegisterComponent]
 })
 export class UsersModule { }

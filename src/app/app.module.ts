@@ -12,6 +12,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
 import { AppSharedModule } from './app-shared/app-shared.module';
+import { RouterModule } from '@angular/router';
+import { routes } from './route-config';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { AppSharedModule } from './app-shared/app-shared.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     CustomerModule,
     UsersModule,

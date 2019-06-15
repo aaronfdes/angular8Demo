@@ -10,22 +10,32 @@ import { MockDataService } from './services/mock-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerDataService } from './services/customer-data.service';
 import { AppSharedModule } from '../app-shared/app-shared.module';
+import { RouterModule, Routes } from '@angular/router';
+import { DetailsComponent } from './details/details.component';
+import { AuthGuardService } from '../app-shared/auth-guard.service';
+
+const routes: Routes = [
+  { path: "customers", component: ListComponent, canActivate: [AuthGuardService] },
+  { path: "customers/:id", component: DetailsComponent, canActivate: [AuthGuardService] }
+]
 
 @NgModule({
   declarations: [
     ListComponent,
     EditComponent,
     CustomerFilterPipe,
-    CustomerColumnFilterPipe
+    CustomerColumnFilterPipe,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-    AppSharedModule
+    AppSharedModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
-    ListComponent
+    // ListComponent
   ],
   providers: [
     { provide: DataService, useClass: CustomerDataService }
