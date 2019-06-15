@@ -1,0 +1,15 @@
+.oddRow {
+    background-color: cadetblue;
+}
+
+.evenRow {
+    background-color: blanchedalmond;
+}
+
+.firstRow {
+    background-color: blueviolet;
+}
+
+.lastRow {
+    background-color: darkgoldenrod
+}

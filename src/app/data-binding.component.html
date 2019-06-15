@@ -1,0 +1,14 @@
+Look at me <span>{{user.firstName | titlecase }} {{user.lastName | titlecase }} </span>I'm a data binding component
+<hr />
+Set a Count:<input type="number" [(ngModel)]="count" [ngModelOptions]="{updateOn:'blur'}" #countRef /><button
+    (click)="increment()">Increase Count</button><br />
+Count:{{count}} <br />
+Count Ref: {{countRef.value}} <br />
+Generate Multiplication Table: <input type="checkbox" [ngModel]="generateTableValue" #generateTableInput> {{generateTableInput.checked}}
+<div [hidden]="!generateTableInput.checked">
+    <hr />
+    <span>The {{count}} times table - Generated</span>
+    <div *ngFor="let x of numbers">
+        <div>{{count}} x {{x}} = {{count*x}}</div>
+    </div>
+</div>

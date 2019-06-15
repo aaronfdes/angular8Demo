@@ -1,0 +1,44 @@
+<h3>Customer</h3>
+<table>
+  <thead>
+    <tr>
+      <td>Search</td>
+      <td><input type="text" [(ngModel)]="searchKey" /></td>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>Search</td>
+      <td><input type="text" [ngModel]="idSearchValue" #idSearch /></td>
+      <td><input type="text" [ngModel]="nameSearchValue" #nameSearch /></td>
+      <td><input type="text" [ngModel]="locationSearchValue" #locationSearch /></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let customer of data | customerFilter: searchKey  | customerColumnFilter :{key: idSearch.value, columnName: 'id' } | customerColumnFilter :{key: nameSearch.value, columnName: 'name' } | customerColumnFilter :{key: locationSearch.value, columnName: 'location' }; index as i;odd as odd;even as even;first as first;last as last;"
+      [ngClass]="{firstRow:first, lastRow:last, oddRow:odd, evenRow:even}">
+      <td>{{i}}</td>
+      <td>{{customer.id}}</td>
+      <td>{{customer.name | titlecase}}</td>
+      <td>{{customer.location}}</td>
+      <td><a href="" (click)="delete($event,customer.id)">Delete</a> | <a href="" (click)="edit($event,customer)">Edit</a></td>
+    </tr>
+    <tr>
+      <td><button (click)="save()" [disabled]="!newCustomer.isValid()">Add</button></td>
+      <td><input type="number" placeholder="ID" [(ngModel)]="newCustomer.id"></td>
+      <td><input type="text" placeholder="Name" [(ngModel)]="newCustomer.name"></td>
+      <td><input type="text" placeholder="Location" [(ngModel)]="newCustomer.location"></td>
+    </tr>
+  </tbody>
+</table>
+<div>{{newCustomer|json}}</div>
+
+
+<app-edit *ngIf="selectedCustomer" [customer]="selectedCustomer" (saved)="editedCustomer($event)"
+  (cancelled)="cancelledSaved($event)"></app-edit>

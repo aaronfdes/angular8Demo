@@ -1,0 +1,12 @@
+<h4>Reactive Forms with RxJs</h4>
+
+<div>
+  <input type="search" placeholder="Search" [formControl]="searchFormControl" />
+</div>
+
+<h5>Simple Results</h5>
+<div>
+  <ul *ngFor="let result of searchObserver | async">
+    <li>{{result}}</li>
+  </ul>
+</div>

@@ -1,0 +1,26 @@
+<h3>Editing Customer ID : {{customer.id}}</h3>
+<form #customerForm="ngForm">
+  <fieldset>
+
+    <p>Name</p>
+    <div>
+      <input type="text" name="name" [(ngModel)]="temp.name" required minlength="3" forbiddenNames="['Sujay','admin']" #nameCtrl="ngModel">
+      <span [hidden]="nameCtrl.valid">Min length is 3 charachers</span>
+      <span *ngIf="nameCtrl.hasError('forbidden')">Name is forbidden</span>
+    </div>
+
+    <p>Location</p>
+    <div>
+      <input type="text" name="location" [(ngModel)]="temp.location" required pattern="[a-zA-Z]{3,}" #locationCtrl="ngModel">
+      <span [hidden]="!locationCtrl.hasError('required')">Field is required</span>
+      <span [hidden]="!locationCtrl.hasError('pattern')">Invalid Pattern</span>
+    </div>
+
+    <p>
+      <button (click)="save()" [disabled]="customerForm.invalid || customerForm.pristine">Save</button>
+      <button (click)="cancel()">Cancel</button>
+    </p>
+    {{temp | json}}
+
+  </fieldset>
+</form>
