@@ -15,13 +15,16 @@ import { AppSharedModule } from './app-shared/app-shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './route-config';
 import { XsrfInterceptorService } from './app-shared/xsrf-interceptor.service';
+import { ChangeDetectionComponent, SimpleComponent } from './change-detection/change-detection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     DataBinding,
-    RxjsComponent
+    RxjsComponent,
+    ChangeDetectionComponent,
+    SimpleComponent
   ],
   imports: [
     BrowserModule,
