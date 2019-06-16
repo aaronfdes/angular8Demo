@@ -1,4 +1,4 @@
-Look at me <span>{{user.firstName | titlecase }} {{user.lastName | titlecase }} </span>I'm a data binding component
+<div>Look at me <span>{{user.firstName | titlecase }} {{user.lastName | titlecase }} </span>I'm a data binding component</div>
 <hr />
 Set a Count:<input type="number" [(ngModel)]="count" [ngModelOptions]="{updateOn:'blur'}" #countRef /><button
     (click)="increment()">Increase Count</button><br />
