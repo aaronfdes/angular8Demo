@@ -1,1 +1,10 @@
-<button (click)="login()">Login</button>
+<form [formGroup]="formGroup">
+    <div>UserName:<input type="text" formControlName="username" /></div>
+    <div>Password:<input type="password" formControlName="password" /></div>
+    <button (click)="login()" [disabled]="!formGroup.valid">Login</button>
+</form>
+<div *ngIf="displayMessage">{{displayMessage}}</div>
+
+<div>{{message}}</div>
+<div [innerHTML]="message"></div>
+<button (click)="change()">DOM Sanatize</button>
