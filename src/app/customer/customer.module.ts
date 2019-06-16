@@ -7,12 +7,13 @@ import { CustomerFilterPipe } from './customer-filter.pipe';
 import { CustomerColumnFilterPipe } from './customer-column-filter.pipe';
 import { DataService } from './services/data-service';
 import { MockDataService } from './services/mock-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomerDataService } from './services/customer-data.service';
 import { AppSharedModule } from '../app-shared/app-shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { AuthGuardService } from '../app-shared/auth-guard.service';
+import { XsrfInterceptorService } from '../app-shared/xsrf-interceptor.service';
 
 const routes: Routes = [
   { path: "customers", component: ListComponent, canActivate: [AuthGuardService] },

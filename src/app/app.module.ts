@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -14,6 +14,7 @@ import { UsersModule } from './users/users.module';
 import { AppSharedModule } from './app-shared/app-shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './route-config';
+import { XsrfInterceptorService } from './app-shared/xsrf-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { routes } from './route-config';
     UsersModule,
     AppSharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: XsrfInterceptorService, multi: true }
+  ],
   // bootstrap: [AppComponent, HelloComponent] // we can bootstrap multiple components
   bootstrap: [AppComponent]
 })
